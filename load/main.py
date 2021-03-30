@@ -2,13 +2,15 @@ import argparse
 import logging
 import pandas as pd
 from article import Article
-from base import Base, engine, Session
+from base import createEngine, Base
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
 def main(filename):
+    name = filename.split('.')[0]
+    engine, Session = createEngine(name)
     Base.metadata.create_all(engine)
     session = Session()
     articles = pd.read_csv(filename)

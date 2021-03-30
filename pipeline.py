@@ -36,9 +36,9 @@ def _load():
     for news_sites_uid in news_sites_uids:
         clean_data_filename = '{}.csv'.format(news_sites_uid)
         subprocess.run(['python', 'main.py', clean_data_filename], cwd='./load')
-        subprocess.run(['mv', 'newspaper.db', '..'], cwd='./load')
         subprocess.run(['rm', '-f', clean_data_filename], cwd='./load')
-
+        subprocess.run(['mv', 'newspaper-{}.db'.format(news_sites_uid), '..'], cwd='./load')
+    
     logger.info('Process completed')
 
 
