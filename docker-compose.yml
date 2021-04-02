@@ -1,0 +1,8 @@
+version: '3.8'
+
+services:
+  scrapper:
+    build:
+      context: .
+    volumes:
+      - "./result:/usr/src/app/result"
